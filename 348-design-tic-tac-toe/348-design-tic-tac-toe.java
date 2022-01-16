@@ -32,7 +32,7 @@ class TicTacToe {
             colCount[col]--;
             if (row == col)
                 diagonalCount--;
-            if (col == N - row - 1)
+            if (col == N - row - 1) //important observation
                 antiDiagonalCount--;
 
             if (rowCount[row] == -N || colCount[col] == -N || diagonalCount == -N || antiDiagonalCount == -N) {
