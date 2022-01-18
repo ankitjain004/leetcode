@@ -14,24 +14,24 @@
  * }
  */
 class Solution {
-    Map<Integer, List<Pair<Integer,Integer>>> map = new HashMap<>();
+    Map<Integer, List<Pair<Integer, Integer>>> map = new HashMap<>();
     int minColumn = 0;
     int maxColumn = 0;
 
     public List<List<Integer>> verticalOrder(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();
-        if(root==null) return ans;
+        if (root == null) return ans;
         recurse(root, 0, 0);
-        for(int i=minColumn;i<=maxColumn;i++)
-        {
-            List<Pair<Integer,Integer>> list = map.get(i);
-            Collections.sort(list, (a,b)->
-                             {return a.getValue()-b.getValue();}
-                            );
-            
+        for (int i = minColumn; i <= maxColumn; i++) {
+            List<Pair<Integer, Integer>> list = map.get(i);
+            Collections.sort(list, (a, b) ->
+                    {
+                        return a.getValue() - b.getValue();
+                    }
+            );
+
             List<Integer> temp = new ArrayList<>();
-            for(int j=0;j<list.size();j++)
-            {
+            for (int j = 0; j < list.size(); j++) {
                 temp.add(list.get(j).getKey());
             }
             ans.add(temp);
@@ -46,11 +46,11 @@ class Solution {
         if (!map.containsKey(hd))
             map.putIfAbsent(hd, new ArrayList<>());
 
-        map.get(hd).add(new Pair<Integer, Integer>(root.val,row));
+        map.get(hd).add(new Pair<Integer, Integer>(root.val, row));
         minColumn = Integer.min(minColumn, hd);
         maxColumn = Integer.max(maxColumn, hd);
 
-        recurse(root.left, hd - 1, row+1);
-        recurse(root.right, hd + 1, row+1);
+        recurse(root.left, hd - 1, row + 1);
+        recurse(root.right, hd + 1, row + 1);
     }
 }
