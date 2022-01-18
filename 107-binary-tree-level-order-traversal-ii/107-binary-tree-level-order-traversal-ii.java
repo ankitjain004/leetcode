@@ -32,18 +32,16 @@ class Solution {
             {
                 TreeNode node = queue.poll();
                 map.get(level).add(node.val);
-                if(node.left!=null)               
+                if(node.left!=null)
                 {
                     queue.add(node.left);
                 }
-                if(node.right!=null)               
+                if(node.right!=null)
                 {
                     queue.add(node.right);
                 }
-                
             }
         }
-        
         for(int i=level;i>=0;i--)
         {
             answer.add(map.get(i));
