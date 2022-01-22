@@ -15,11 +15,11 @@ class Solution {
             solution.add(new ArrayList<>(temp));
             return;
         }
-        if(currSum>target) return;
+        if (currSum > target) return;
 
         for (int i = index; i < n; i++) {
             if (i > index && candidates[i] == candidates[i - 1]) continue;
-            if(candidates[i]>target) break;
+            if (candidates[i] > target) break;
             temp.add(candidates[i]);
             combinationSum2Utils(candidates, target, currSum + candidates[i], temp, i + 1);
             temp.remove(temp.size() - 1);
