@@ -12,7 +12,7 @@ class Solution {
                 int number = 0;
                 for(int j=i; j<i+numDigits;j++)
                 {
-                    number = number * 10 + j;
+                    number = number * 10 + j; //instead of this we can also take a substring from sample 123456789
  
                 }
                 if(number>=low && number<=high)
