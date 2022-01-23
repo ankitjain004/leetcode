@@ -4,26 +4,23 @@ class Solution {
         int n = nums.length;
         int sum = 0;
         int count = 0;
-        for(int i=0;i<n;i++)
-        {
+        for (int i = 0; i < n; i++) {
             sum = sum + nums[i];
-            int rem = ((sum%k)+k)%k;
+            int rem = ((sum % k) + k) % k;
             map.putIfAbsent(rem, 0);
-            map.put(rem, map.get(rem)+1);
+            map.put(rem, map.get(rem) + 1);
         }
-        
-        for(Map.Entry<Integer, Integer> entry : map.entrySet())
-        {
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             int key = entry.getKey();
             int val = entry.getValue();
-            if(key == 0)  
-            {
-                val = val+1;
+            if (key == 0) {
+                val = val + 1; //kyunki 0 me start se bhi to saare include hoga, one more point
             }
-            count = count + ((val)*(val-1))/2;
+            count = count + ((val) * (val - 1)) / 2;
         }
-        
+
         return count;
-        
+
     }
 }
