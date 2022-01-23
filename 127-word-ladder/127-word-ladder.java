@@ -1,3 +1,11 @@
+/*
+1. take a word
+2. make all possible combinations from tht word by replacing each letter of word one by one with all 26 letters
+4. Check if they are present in set . If yes put them in queue and proceed . Remove the element from set so as not to get stuck in infinite loop
+5. If you encounter endWord you got it
+
+
+*/
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> wordSet = new HashSet<>(wordList);
