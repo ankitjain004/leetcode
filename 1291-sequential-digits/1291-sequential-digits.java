@@ -1,20 +1,7 @@
 class Solution {
     public List<Integer> sequentialDigits(int low, int high) {
-        int digitInLowerRange = 0;
-        int digitInHigherRange = 0;
-        int temp = low;
-        while(temp!=0)
-        {
-            temp/=10;
-            digitInLowerRange++;
-        }
-        
-        temp = high;
-        while(temp!=0)
-        {
-            temp/=10;
-            digitInHigherRange++;
-        }
+        int digitInLowerRange = String.valueOf(low).length();
+        int digitInHigherRange = String.valueOf(high).length();
         
         ArrayList<Integer> ans = new ArrayList<>();
         
