@@ -1,25 +1,34 @@
 class Solution {
-    List<List<Integer>> list;
-
+    List<List<Integer>> answer = new ArrayList<>();
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        list = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
-        combinationSumUtils(candidates, 0, temp, 0, target);
-
-        return list;
+        combinationSumUtils(candidates, 0, target, temp);
+        return answer;
     }
-
-    public void combinationSumUtils(int[] candidates, int index, List<Integer> temp, int currSum, int target) {
-        if (index > candidates.length - 1) return;
-        if (currSum > target) return;
-        if (currSum == target) {
-            list.add(new ArrayList<>(temp));
+    
+    public void combinationSumUtils(int[] candidates, int index, int target, List<Integer> temp)
+    {
+        
+        if(index>=candidates.length)
+            return;
+        
+        if(target<0)
+            return;
+        
+        if(target==0)
+        {
+            answer.add(new ArrayList(temp));
             return;
         }
+        
+        // exclude
+        combinationSumUtils(candidates, index+1 , target, temp);
+        // include
         temp.add(candidates[index]);
-        combinationSumUtils(candidates, index, temp, currSum + candidates[index], target);
-        temp.remove(temp.size() - 1);
-        combinationSumUtils(candidates, index + 1, temp, currSum, target);
+        combinationSumUtils(candidates, index , target - candidates[index], temp);
+        temp.remove(temp.size()-1);
+        
+        
+        
     }
-
 }
